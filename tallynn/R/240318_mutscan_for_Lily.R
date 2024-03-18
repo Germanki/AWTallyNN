@@ -1,3 +1,5 @@
+library(mutscan)
+
 output <- digestFastqs(
   fastqForward = "/home/ubuntu/AWTallyNN/tallynn/python/240318_IDTGblock_Flipped_2.fastq",
   elementsForward = "SPVS",
