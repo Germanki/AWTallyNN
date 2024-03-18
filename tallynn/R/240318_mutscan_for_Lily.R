@@ -23,22 +23,22 @@ write.csv(summary_table, file = output_file, row.names = FALSE)
 # Create plots using mutscan functions and save them as PNG files
 
 # Plot the filtering summary and save as PNG
-png(filename = "/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_filtering_summary.png", width = 800, height = 600)
+png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_filtering_summary.png"), width = 800, height = 600)
 plotFiltering(output, valueType = "reads", onlyActiveFilters = TRUE)
 dev.off()
 
 # Plot the error statistics and save as PNG
-png(filename = "/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_error_stats.png", width = 800, height = 600)
+png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_error_stats.png"), width = 800, height = 600)
 plotErrorStats(output)
 dev.off()
 
 # Plot the distribution of variant counts and save as PNG
-png(filename = "/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_distribution.png", width = 800, height = 600)
+png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_distribution.png"), width = 800, height = 600)
 plotDistributions(output, plotType = "density", pseudocount = 1)
 dev.off()
 
 # Plot the total counts per variant and save as PNG
-png(filename = "/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_totals.png", width = 800, height = 600)
+png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_totals.png"), width = 800, height = 600)
 plotTotals(output)
 dev.off()
 
