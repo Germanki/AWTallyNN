@@ -23,7 +23,8 @@ write.csv(summary_table, file = output_file, row.names = FALSE)
 # Convert the output object to a SummarizedExperiment object
 se <- summarizeExperiment(
   x = list(sample = output),
-  coldata = data.frame(Name = "sample", Condition = "condition")
+  coldata = data.frame(Name = "sample", Condition = "condition"),
+  countType = "reads"
 )
 
 # Create plots using mutscan functions and save them as PNG files
