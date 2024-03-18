@@ -24,7 +24,7 @@ write.csv(summary_table, file = output_file, row.names = FALSE)
 # Convert the output object to a SummarizedExperiment object
 se <- SummarizedExperiment(
   assays = list(counts = matrix(output$summaryTable$nbrReads, ncol = 1)),
-  rowData = output$summaryTable[, c("sequence", "mutantName")],
+  rowData = DataFrame(output$summaryTable[, c("sequence", "mutantName")]),
   colData = DataFrame(Name = "sample", Condition = "condition")
 )
 
