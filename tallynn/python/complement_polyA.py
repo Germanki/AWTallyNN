@@ -41,6 +41,8 @@ tab = str.maketrans("ACTG", "TGAC")
 def reverse_complement_table(seq):
     return seq.translate(tab)[::-1]
 
+forward_strand = "CCGCAAGATG"
+reverse_strand = "CTTCCTCAA"
 
 outfile = open(args.outname, "w")
 log =  iotools.open_file(args.outname + ".log","w")
@@ -50,15 +52,13 @@ with pysam.FastxFile(args.infile) as fh:
     
     for record in fh:
         y +=1
-        seq = record.sequence[0:100]
-        m=regex.findall("(TTTTTTTTTTTTTTTTTTTT){e<=3}", str(seq))
-        if m:
+        # Check for forward strand
+        if forward_strand in record.sequence:
             n +=1
             outfile.write("@%s\n%s\n+\n%s\n" % (record.name, record.sequence, record.quality))
         else:
-            seq = record.sequence[-100:]
-            m=regex.findall("(AAAAAAAAAAAAAAAAA){e<=3}", str(seq))
-            if m:
+            # Check for reverse strand and reverse complement if found
+            if reverse_strand in record.sequence:
                 n +=1
                 sequence = reverse_complement_table(str(record.sequence))
                 quality = str(record.quality)[::-1]
