@@ -21,32 +21,40 @@ summary_table <- output$summaryTable
 # Save the summary table as a CSV file
 write.csv(summary_table, file = output_file, row.names = FALSE)
 
-# Convert the output object to a SummarizedExperiment object
-se <- SummarizedExperiment(
-  assays = list(counts = matrix(output$summaryTable$nbrReads, ncol = 1)),
-  rowData = DataFrame(output$summaryTable[, c("sequence", "mutantName")]),
-  colData = DataFrame(Name = "sample", Condition = "condition")
+# Generate SummarizedExperiment object
+se <- summarizeExperiment(
+  x = list(sample = output),
+  coldata = data.frame(Name = "sample", Condition = "condition")
 )
+
+# Access count matrix, sample annotations, and variant annotations
+head(assay(se, "counts"))
+Matrix::colSums(assay(se, "counts"))
+head(rowData(se))
+colData(se)
+
+# Check count type (reads or UMIs)
+metadata(se)$countType
 
 # Create plots using mutscan functions and save them as PNG files
 
 # Plot the filtering summary and save as PNG
 png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_filtering_summary.png"), width = 800, height = 600)
-plotFiltering(output, valueType = "reads", onlyActiveFilters = TRUE)
+plotFiltering(se, valueType = "reads", onlyActiveFilters = TRUE)
 dev.off()
 
 # Plot the error statistics and save as PNG
 png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_error_stats.png"), width = 800, height = 600)
-plotErrorStats(output)
+plotErrorStats(se)
 dev.off()
 
 # Plot the distribution of variant counts and save as PNG
 png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_distribution.png"), width = 800, height = 600)
-plotDistributions(output, plotType = "density", pseudocount = 1)
+plotDistributions(se, plotType = "density", pseudocount = 1)
 dev.off()
 
 # Plot the total counts per variant and save as PNG
 png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_totals.png"), width = 800, height = 600)
-plotTotals(output)
+plotTotals(se)
 dev.off()
 
