@@ -1,4 +1,3 @@
-library(SummarizedExperiment)
 library(mutscan)
 
 output <- digestFastqs(
@@ -45,9 +44,9 @@ plotFiltering(se, valueType = "reads", onlyActiveFilters = TRUE)
 dev.off()
 
 # Plot the error statistics and save as PNG
-png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_error_stats.png"), width = 800, height = 600)
-plotErrorStats(se)
-dev.off()
+#png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_error_stats.png"), width = 800, height = 600)
+#plotErrorStats(se, valueType = "reads")
+#dev.off()
 
 # Plot the distribution of variant counts and save as PNG
 png(filename = paste0("/home/ubuntu/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "_variant_distribution.png"), width = 800, height = 600)
