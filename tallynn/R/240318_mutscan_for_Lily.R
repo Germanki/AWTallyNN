@@ -1,4 +1,4 @@
-library(summarizedExperiment)
+library(SummarizedExperiment)
 library(mutscan)
 
 output <- digestFastqs(
