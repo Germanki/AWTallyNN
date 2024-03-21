@@ -24,7 +24,8 @@ write.csv(summary_table, file = output_file, row.names = FALSE)
 # Generate SummarizedExperiment object
 se <- summarizeExperiment(
   x = list(sample = output),
-  coldata = data.frame(Name = "sample", Condition = "condition")
+  coldata = data.frame(Name = "sample", Condition = "condition"),
+  countType = "reads"  # Set countType to "reads" instead of "umis"
 )
 
 # Access count matrix, sample annotations, and variant annotations
