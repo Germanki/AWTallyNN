@@ -6,14 +6,14 @@ output <- digestFastqs(
   elementsForward = "SPVS",
   primerForward = "GCTGGTGAGGTTGCGGATAACG",
   elementLengthsForward = c(-1, 22, 18, -1),
-  maxReadLength = 2000  # Increase the maximum read length as needed
+  maxReadLength = 3000  # Increase the maximum read length as needed
   # Add other arguments as needed
 )
 
 date <- Sys.Date()
 
 # Specify the output file path and name for the CSV file, including the date
-output_file <- paste0("/home/ubuntu/AWTallyNN/tallynn/R/mutscan_output_", format(date, "%Y-%m-%d"), ".csv")
+output_file <- paste0("/home/ubuntu/AWTallyNN2/AWTallyNN/tallynn/R/mutscan_output_", format(date, "%Y-%m-%d"), ".csv")
 
 # Extract the summary table from the output object
 summary_table <- output$summaryTable
