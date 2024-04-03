@@ -13,7 +13,7 @@ output <- digestFastqs(
 date <- Sys.Date()
 
 # Specify the output file path and name for the CSV file, including the date
-output_dir <- "/home/ubuntu/AWTallyNN2/AWTallyNN/tallynn/R/" + format(date, "%Y-%m-%d") + "/"
+output_dir <- paste0("/home/ubuntu/AWTallyNN2/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "/")
 output_file <- paste0(output_dir, "mutscan_output_", format(date, "%Y-%m-%d"), ".csv")
 
 # Extract the summary table from the output object
