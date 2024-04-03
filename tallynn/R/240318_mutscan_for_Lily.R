@@ -14,6 +14,10 @@ date <- Sys.Date()
 
 # Specify the output file path and name for the CSV file, including the date
 output_dir <- paste0("/home/ubuntu/AWTallyNN2/AWTallyNN/tallynn/R/", format(date, "%Y-%m-%d"), "/")
+#check if output directory exists and then make the output directory if it does not exist
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir, recursive = TRUE)
+}
 output_file <- paste0(output_dir, "mutscan_output_", format(date, "%Y-%m-%d"), ".csv")
 
 # Extract the summary table from the output object
