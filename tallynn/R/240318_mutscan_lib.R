@@ -6,7 +6,7 @@ output <- digestFastqs(
   elementsForward = "SPVS",
   primerForward = "GCTGGTGAGGTTGCGGATAACGC",
   elementLengthsForward = c(-1, 23, 18, -1),
-  maxReadLength = 5000  # Increase the maximum read length as needed
+  maxReadLength = 6000  # Increase the maximum read length as needed
   # Add other arguments as needed
 )
 
