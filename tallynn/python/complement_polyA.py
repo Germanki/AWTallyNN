@@ -41,8 +41,8 @@ tab = str.maketrans("ACTG", "TGAC")
 def reverse_complement_table(seq):
     return seq.translate(tab)[::-1]
 
-forward_strand = "GCCCGACA" #must be caps
-reverse_strand = "GAAGGCTGTCG" #must be caps
+forward_strand = "GCCCGACA" #must be caps ttcctgcaagaaatcaagccg
+reverse_strand = "GAAGGCTGTCG" #must be caps cggcttgaTTTCTTGCAGGAA
 
 outfile = open(args.outname, "w")
 log =  iotools.open_file(args.outname + ".log","w")
@@ -52,6 +52,9 @@ with pysam.FastxFile(args.infile) as fh:
     
     for record in fh:
         y +=1
+        #Check length of read
+        if len(record.sequence) < 100:
+            number_of_reads_below_100 +=1
         # Check for forward strand
         if forward_strand in record.sequence:
             n +=1
@@ -69,6 +72,7 @@ with pysam.FastxFile(args.infile) as fh:
 log.write("The number of total reads with polyA: %s\n" %(n))
 log.write("The number of total reads is: %s\n" %(y))
 log.write("The number of total recovered percent is: %s\n" %((n/y)*100))
+log.write("The number of total reads with length < 100: %s\n" %(number_of_reads_below_100))
 
 log.close()
 outfile.close()
