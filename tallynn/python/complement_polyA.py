@@ -42,7 +42,7 @@ def reverse_complement_table(seq):
     return seq.translate(tab)[::-1]
 
 forward_strand = "GCCCGACAGCCTTC" #must be caps
-reverse_strand = "GAAGGCTGTGCG" #must be caps
+reverse_strand = "GAAGGCTGTCG" #must be caps
 
 outfile = open(args.outname, "w")
 log =  iotools.open_file(args.outname + ".log","w")
