@@ -48,6 +48,7 @@ outfile = open(args.outname, "w")
 log =  iotools.open_file(args.outname + ".log","w")
 n = 0
 y = 0
+number_of_reads_below_100 = 0
 with pysam.FastxFile(args.infile) as fh:
     
     for record in fh:
