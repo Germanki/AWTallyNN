@@ -41,8 +41,8 @@ tab = str.maketrans("ACTG", "TGAC")
 def reverse_complement_table(seq):
     return seq.translate(tab)[::-1]
 
-forward_strand = "CCGCAAGATG"
-reverse_strand = "CTTCCTCAA"
+forward_strand = "gcccgacagccttc"
+reverse_strand = "gaaggctgtcg"
 
 outfile = open(args.outname, "w")
 log =  iotools.open_file(args.outname + ".log","w")
