@@ -15,8 +15,8 @@ opt_parser <- OptionParser(option_list = option_list)
 opt <- parse_args(opt_parser)
 
 # Validate input
-if (is.null(opt$infile)) {
-  stop("An input file must be specified with the --infile option.", call. = FALSE)
+if (is.null(opt$infile_f) || is.null(opt$infile_r)) {
+  stop("Both input files must be specified with the --infile_f and --infile_r options.", call. = FALSE)
 }
 
 # Use the current directory for output
