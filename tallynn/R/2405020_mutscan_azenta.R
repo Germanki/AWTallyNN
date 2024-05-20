@@ -3,9 +3,10 @@ library(mutscan)
 library(optparse)
 
 # Define command line options
+# Define command line options
 option_list <- list(
-  make_option(c("-i", "--infile_f"), type = "character", default = NULL, help = "Path to the input FASTQ file", metavar = "character"),
-  make_option(c("-i", "--infile_r"), type = "character", default = NULL, help = "Path to the input FASTQ file", metavar = "character"),
+  make_option(c("-f", "--infile_f"), type = "character", default = NULL, help = "Path to the input forward FASTQ file", metavar = "character"),
+  make_option(c("-r", "--infile_r"), type = "character", default = NULL, help = "Path to the input reverse FASTQ file", metavar = "character"),
   make_option(c("-o", "--outname"), type = "character", default = "mutscan_output", help = "Base name for output files", metavar = "character")
 )
 
