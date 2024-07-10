@@ -3,9 +3,10 @@ library(mutscan)
 library(optparse)
 
 # Define command line options
+# Define command line options
 option_list <- list(
-  make_option(c("-i", "--infile_f"), type = "character", default = NULL, help = "Path to the input FASTQ file", metavar = "character"),
-  make_option(c("-i", "--infile_r"), type = "character", default = NULL, help = "Path to the input FASTQ file", metavar = "character"),
+  make_option(c("-f", "--infile_f"), type = "character", default = NULL, help = "Path to the input forward FASTQ file", metavar = "character"),
+  #make_option(c("-r", "--infile_r"), type = "character", default = NULL, help = "Path to the input reverse FASTQ file", metavar = "character"),
   make_option(c("-o", "--outname"), type = "character", default = "mutscan_output", help = "Base name for output files", metavar = "character")
 )
 
@@ -14,9 +15,9 @@ opt_parser <- OptionParser(option_list = option_list)
 opt <- parse_args(opt_parser)
 
 # Validate input
-if (is.null(opt$infile)) {
-  stop("An input file must be specified with the --infile option.", call. = FALSE)
-}
+#if (is.null(opt$infile_f) || is.null(opt$infile_r)) {
+#  stop("Both input files must be specified with the --infile_f and --infile_r options.", call. = FALSE)
+#}
 
 # Use the current directory for output
 output_dir <- paste0(getwd(), "/", format(Sys.Date(), "%Y-%m-%d"), "_", format(Sys.time(), "%H-%M-%S"), "/")
@@ -34,9 +35,13 @@ output_file <- paste0(output_name, ".csv")
 # For example, replace your `digestFastqs` call with the new input file path:
 output <- digestFastqs(
   fastqForward = opt$infile_f,
+  #fastqReverse = opt$infile_r,
   elementsForward = "SPVS",
-  primerForward = "gcccgacagccttc",
-  elementLengthsForward = c(-1, 14, 3, -1),
+  #elementsReverse = "SPVS",
+  primerForward = "GCTGGTGAGGTTGCGGATAACGC",
+  #primerReverse = "TTAGGGAGTAGGGTAGTG",
+  elementLengthsForward = c(-1, 23, 18, -1),
+  #elementLengthsReverse = c(-1, 18, 18, -1),
   maxReadLength = 6000  # Increase the maximum read length as needed
   # Add other arguments as needed
 )

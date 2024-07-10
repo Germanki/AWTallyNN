@@ -73,7 +73,7 @@ with pysam.FastxFile(args.infile) as fh:
 log.write("The number of total reads with polyA: %s\n" %(n))
 log.write("The number of total reads is: %s\n" %(y))
 log.write("The number of total recovered percent is: %s\n" %((n/y)*100))
-log.write("The number of total reads with length < 100: %s\n" %(number_of_reads_below_150))
+log.write("The number of total reads with length < 150: %s\n" %(number_of_reads_below_150))
 
 log.close()
 outfile.close()
