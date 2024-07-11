@@ -38,9 +38,9 @@ output <- digestFastqs(
   #fastqReverse = opt$infile_r,
   elementsForward = "SPVS",
   #elementsReverse = "SPVS",
-  primerForward = "GCTGGTGAGGTTGCGGATAACGC",
+  primerForward = "GTTGCGGATAACGC",
   #primerReverse = "TTAGGGAGTAGGGTAGTG",
-  elementLengthsForward = c(-1, 23, 18, -1),
+  elementLengthsForward = c(-1, 14, 18, -1),
   #elementLengthsReverse = c(-1, 18, 18, -1),
   maxReadLength = 6000  # Increase the maximum read length as needed
   # Add other arguments as needed
