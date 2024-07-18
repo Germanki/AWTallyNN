@@ -38,7 +38,7 @@ output <- digestFastqs(
   #fastqReverse = opt$infile_r,
   elementsForward = "SPVS",
   #elementsReverse = "SPVS",
-  primerForward = "GTTGCGGATAACGC",
+  primerForward = "GGATAACGC",
   #primerReverse = "TTAGGGAGTAGGGTAGTG",
   elementLengthsForward = c(-1, 14, 18, -1),
   #elementLengthsReverse = c(-1, 18, 18, -1),
